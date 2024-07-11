@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { User } from 'src/app/interfaces/user.interface';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
@@ -24,22 +25,25 @@ export class LoginComponent implements OnInit{
     
     ngOnInit() 
     {
-       this.generateToken();
+       this.setTokenApp();
 
     }
    
 
     constructor(public layoutService: LayoutService,
-        private authService : AuthService
+        private authService : AuthService,
+        private router: Router
     ) { }
 
    
-    async generateToken()
+    async setTokenApp()
     {
-      
+        console.log("filterUser.senha", this.filterUser.senha);
         const token= await lastValueFrom(this.authService.sign(this.filterUser));
+        console.log("Token", token);
         localStorage.setItem('token', token);
-
+        if(!token)
+            this.router.navigate(['/']);
     }
 
 
