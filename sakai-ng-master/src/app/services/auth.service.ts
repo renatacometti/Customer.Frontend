@@ -8,19 +8,24 @@ import { Observable } from "rxjs";
     providedIn: 'root'
   })
   export class AuthService {
-    private  controller =  `${environment.urlAPI}Auth`;
+    //private  controller =  `${environment.urlAPI}Auth`;
+    private apiUrl = 'https://localhost:7254/api/Auth'; 
 
   constructor(
     private http: HttpClient,
   ) {}
 
   
-  sign(user: User) : Observable<any> {
-    return this.http.post<any>(`${this.controller}`, user);
-  }
+  // sign(user: User) : Observable<any> {
+  //   return this.http.post<any>(`${this.controller}`, user);
+  // }
 
-  validaToken() : Observable<any> {    
-    return this.http.get<any>(`${this.controller}/ValidaToken`);
+  // validaToken() : Observable<any> {    
+  //   return this.http.get<any>(`${this.controller}/ValidaToken`);
+  // }
+
+  sign(user: User) : Observable<any> {
+    return this.http.post(`${this.apiUrl}`, user);;
   }
 
 }

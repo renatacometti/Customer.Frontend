@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
     constructor(private primengConfig: PrimeNGConfig, private router: Router,) { }
 
     ngOnInit() {
-        this.primengConfig.ripple = true;
+        //this.primengConfig.ripple = true;
         this.checkLocalStorage();
     }
 

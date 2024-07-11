@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit{
         const token= await lastValueFrom(this.authService.sign(this.filterUser));
         console.log("Token", token);
         localStorage.setItem('token', token);
+        
         if(!token)
             this.router.navigate(['/']);
     }
