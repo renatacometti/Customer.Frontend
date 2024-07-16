@@ -8,28 +8,26 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styles: [`
-        :host ::ng-deep .pi-eye,
-        :host ::ng-deep .pi-eye-slash {
-            transform:scale(1.6);
-            margin-right: 1rem;
-            color: var(--primary-color) !important;
-        }
-    `]
+    // styles: [`
+    //     :host ::ng-deep .pi-eye,
+    //     :host ::ng-deep .pi-eye-slash {
+    //         transform:scale(1.6);
+    //         margin-right: 1rem;
+    //         color: var(--primary-color) !important;
+    //     }
+    // `]
 })
 export class LoginComponent implements OnInit{
 
 
     filterUser : User = {} as User;
-    valCheck: string[] = ['remember'];
+    //valCheck: string[] = ['remember'];
     
     ngOnInit() 
     {
        this.setTokenApp();
 
     }
-   
-
     constructor(public layoutService: LayoutService,
         private authService : AuthService,
         private router: Router
@@ -39,10 +37,11 @@ export class LoginComponent implements OnInit{
     async setTokenApp()
     {
         console.log("filterUser.senha", this.filterUser.senha);
+        console.log("filterUser.login", this.filterUser.email);
         const token= await lastValueFrom(this.authService.sign(this.filterUser));
         console.log("Token", token);
         localStorage.setItem('token', token);
-        
+
         if(!token)
             this.router.navigate(['/']);
     }

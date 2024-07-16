@@ -25,7 +25,7 @@ import { Observable } from "rxjs";
   // }
 
   sign(user: User) : Observable<any> {
-    return this.http.post(`${this.apiUrl}`, user);;
+    return this.http.post<any>(`${this.apiUrl}`, user);
   }
 
 }
