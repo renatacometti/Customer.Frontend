@@ -10,7 +10,6 @@ import { APIResponse } from "../interfaces/api-response.interface";
   })
   export class AuthService {
     private  controller =  `${environment.urlAPI}Auth`;
-    //private apiUrl = 'https://localhost:7254/api/Auth'; 
 
   constructor(
     private http: HttpClient,
