@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
         if (!token) {
         // Se o item for nulo, redireciona para a página de login
-        this.router.navigate(['auth/login']);
+            this.router.navigate(['auth/login']);
         }
     }
 }
