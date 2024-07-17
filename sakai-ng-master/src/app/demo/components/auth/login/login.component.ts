@@ -36,14 +36,17 @@ export class LoginComponent implements OnInit{
    
     async setTokenApp()
     {
-        console.log("filterUser.senha", this.filterUser.senha);
-        console.log("filterUser.login", this.filterUser.email);
-        const token = await lastValueFrom(this.authService.sign(this.filterUser));
-        console.log("Token", token);
-        localStorage.setItem('token', token.item);
-
-        if(!token)
-            this.router.navigate(['/']);
+        try{
+            console.log("filterUser.senha", this.filterUser.senha);
+            console.log("filterUser.login", this.filterUser.email);
+            const token = await lastValueFrom(this.authService.sign(this.filterUser));
+            console.log("Token", token.item);
+            if(!token)
+                localStorage.setItem('token', token.item);
+                this.router.navigate(['/']);
+                
+        }catch (error) {}
+        
     }
 
 
