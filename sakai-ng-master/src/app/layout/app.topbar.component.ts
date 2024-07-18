@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-topbar',
@@ -16,5 +17,13 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService) { }
-}
+    constructor(public layoutService: LayoutService, 
+                private router: Router) { }
+
+    logout() {
+        //localStorage.removeItem("TOKEN-Application"); -- esse remove apenas o token em questão
+        localStorage.clear(); // esse removerá todos os tokens do sistema
+        this.router.navigate(['auth/login']);
+      }
+    }
+

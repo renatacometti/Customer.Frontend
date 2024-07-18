@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     checkLocalStorage()
     {
         // Verifica se o item no localStorage é nulo ou indefinido
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("TOKEN-Application");
 
         if (!token) {
         // Se o item for nulo, redireciona para a página de login

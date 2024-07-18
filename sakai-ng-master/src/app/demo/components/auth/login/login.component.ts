@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit{
             console.log("filterUser.login", this.filterUser.email);
             const token = await lastValueFrom(this.authService.sign(this.filterUser));
             console.log("Token", token.item);
-            if(!token)
-                localStorage.setItem('token', token.item);
+            if(token.item)
+                localStorage.setItem("TOKEN-Application", token.item);
                 this.router.navigate(['/']);
-                
+
         }catch (error) {}
         
     }

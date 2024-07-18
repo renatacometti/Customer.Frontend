@@ -160,12 +160,7 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             },
-            {
-                label: 'Sair',
-                items: [
-                    { label: 'Out', icon: 'pi pi-sign-out', routerLink: ['/'] }
-                ]
-            },
+           
         ];
     }
 }
