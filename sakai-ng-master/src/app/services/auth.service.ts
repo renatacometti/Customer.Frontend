@@ -19,5 +19,5 @@ import { APIResponse } from "../interfaces/api-response.interface";
     return this.http.post<APIResponse<any>>(`${this.controller}/Sign`,user);
     
   }
-
+  //teste
 }
