@@ -1,6 +1,6 @@
 export interface APIResponse<T> {
     item: T;
-    message: string;
     success: boolean;
-
+    error: boolean;
+    message: string;
 }
