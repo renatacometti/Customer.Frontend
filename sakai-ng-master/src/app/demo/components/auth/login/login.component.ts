@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit{
     
     ngOnInit() 
     {
-       this.setTokenApp();
-
+       
+        this.checkExistingToken();
     }
     constructor(public layoutService: LayoutService,
         private authService : AuthService,
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
     async setTokenApp()
     {
         try{
-            console.log("filterUser.senha", this.filterUser.senha);
+            console.log("filterUser.senha", this.filterUser.password);
             console.log("filterUser.login", this.filterUser.email);
             const token = await lastValueFrom(this.authService.sign(this.filterUser));
             console.log("Token", token.item);
@@ -47,6 +47,13 @@ export class LoginComponent implements OnInit{
 
         }catch (error) {}
         
+    }
+
+    private checkExistingToken() {
+        const token = localStorage.getItem("TOKEN-Application");
+        if (token) {
+            this.router.navigate(['/']); // Redireciona se o token já existir
+        }
     }
 
 
